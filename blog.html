@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>blog | 建築学ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #ff7f50;
+  --coral-pale: #ffe3d6;
+  --lime: #adff2f;
+  --lime-pale: #eeffd0;
+  --ink: #2a2118;
+  --paper: #fffdf9;
+  --line: #d9cfc4;
+  --font: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--lime-pale) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lime-pale) 1px, transparent 1px);
+  background-size: 32px 32px;
+  line-height: 1.85;
+}
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+header { background: var(--coral); border-bottom: 3px solid var(--ink); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 14px; }
+.logo { font-weight: 900; font-size: 1.2rem; text-decoration: none; letter-spacing: .04em; }
+nav ul { display: flex; gap: 6px; list-style: none; flex-wrap: wrap; }
+nav a { display: block; padding: 4px 14px; text-decoration: none; font-weight: 500; border: 2px solid transparent; }
+nav a:hover { border-color: var(--ink); background: var(--lime); }
+nav a[aria-current="page"] { background: var(--ink); color: var(--lime); }
+
+.page-title { padding: 48px 0 24px; }
+h1 { font-weight: 900; font-size: clamp(1.8rem, 5vw, 2.6rem); display: flex; align-items: center; gap: 14px; }
+h1::before { content: ""; width: 16px; height: 40px; background: var(--coral); border: 2px solid var(--ink); }
+.page-title p { margin-top: 8px; }
+
+/* feed */
+.feed { max-width: 640px; margin: 0 auto 56px; background: var(--paper); border: 2px solid var(--ink); list-style: none; }
+.feed li { padding: 18px 24px 20px; border-top: 1px solid var(--line); }
+.feed li:first-child { border-top: none; }
+.feed time { display: block; font-size: .85rem; font-weight: 700; color: #b8461a; }
+.feed p { margin-top: 2px; }
+.feed li:first-child { border-left: 8px solid var(--lime); }
+
+footer { background: var(--ink); color: var(--paper); padding: 28px 0; font-size: .9rem; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer a { color: var(--lime); }
+
+@media (max-width: 760px) {
+  .page-title { padding-top: 32px; }
+  .feed li { padding: 16px 18px 18px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">建築学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html">index</a></li>
+        <li><a href="blog.html" aria-current="page">blog</a></li>
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="page-title">
+      <h1>blog</h1>
+      <p>建築学の勉強の進捗を、日記のように書いていきます。新しい記録が上です。</p>
+    </div>
+
+    <ul class="feed">
+      <li><time datetime="2026-10-25">2026.10.25</time><p>断面図の読み方をやり直した。階高と天井高の違いがやっと区別できた。</p></li>
+      <li><time datetime="2026-10-23">2026.10.23</time><p>ゴシック建築のフライング・バットレスについてまとめた。外から支える発想がおもしろい。</p></li>
+      <li><time datetime="2026-10-20">2026.10.20</time><p>構造力学の入門書を1章読んだ。力のつり合いは図に描くと分かりやすい。</p></li>
+      <li><time datetime="2026-10-17">2026.10.17</time><p>平面図の記号を覚える日。ドアの開き方を表す線がなかなか覚えられない。</p></li>
+      <li><time datetime="2026-10-14">2026.10.14</time><p>日当たりと窓の向きについて勉強した。南向きが良いと聞くけれど、理由を数字で見ると納得できた。</p></li>
+      <li><time datetime="2026-10-10">2026.10.10</time><p>建築基準法の入門を読み始めた。用語が多くて大変だけど、少しずつ進める。</p></li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 建築学ノート</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
