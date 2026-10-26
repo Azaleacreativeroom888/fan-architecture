@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>建築学ノート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --coral: #ff7f50;
+  --coral-pale: #ffe3d6;
+  --lime: #adff2f;
+  --lime-pale: #eeffd0;
+  --ink: #2a2118;
+  --paper: #fffdf9;
+  --line: #d9cfc4;
+  --font: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--lime-pale) 1px, transparent 1px),
+    linear-gradient(90deg, var(--lime-pale) 1px, transparent 1px);
+  background-size: 32px 32px;
+  line-height: 1.85;
+}
+a { color: inherit; }
+a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+/* header */
+header { background: var(--coral); border-bottom: 3px solid var(--ink); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 14px; padding-bottom: 14px; }
+.logo { font-weight: 900; font-size: 1.2rem; text-decoration: none; letter-spacing: .04em; }
+nav ul { display: flex; gap: 6px; list-style: none; flex-wrap: wrap; }
+nav a { display: block; padding: 4px 14px; text-decoration: none; font-weight: 500; border: 2px solid transparent; }
+nav a:hover { border-color: var(--ink); background: var(--lime); }
+nav a[aria-current="page"] { background: var(--ink); color: var(--lime); }
+
+/* hero */
+.hero { padding: 64px 0 56px; }
+.hero .wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.hero h1 { font-weight: 900; font-size: clamp(2.2rem, 6vw, 3.8rem); line-height: 1.25; letter-spacing: .02em; }
+.hero h1 span { background: linear-gradient(transparent 58%, var(--lime) 58%); }
+.hero p { margin-top: 22px; max-width: 30em; }
+.hero .btns { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 10px 22px; font-weight: 700; text-decoration: none; border: 2px solid var(--ink); background: var(--coral); }
+.btn.alt { background: var(--lime); }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+.drawing { width: 100%; height: auto; }
+.drawing text { font-family: var(--font); font-size: 11px; fill: var(--ink); }
+
+/* sections */
+section { padding: 48px 0; }
+h2 { font-weight: 900; font-size: 1.6rem; display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+h2::before { content: ""; width: 14px; height: 32px; background: var(--coral); border: 2px solid var(--ink); }
+.lead { margin-bottom: 24px; }
+.panel { background: var(--paper); border: 2px solid var(--ink); }
+
+/* topics */
+.topics { list-style: none; }
+.topics li { display: grid; grid-template-columns: 11em 1fr; gap: 20px; padding: 16px 22px; border-top: 1px solid var(--line); align-items: baseline; }
+.topics li:first-child { border-top: none; }
+.topics strong { font-size: 1.1rem; border-left: 8px solid var(--lime); padding-left: 12px; }
+.topics li:nth-child(even) strong { border-left-color: var(--coral); }
+
+/* recent log */
+.log { list-style: none; }
+.log li { padding: 18px 22px; border-top: 1px solid var(--line); }
+.log li:first-child { border-top: none; }
+.log time { display: block; font-size: .85rem; font-weight: 700; color: #b8461a; }
+.more { padding: 14px 22px; border-top: 2px solid var(--ink); background: var(--coral-pale); text-align: right; font-weight: 700; }
+
+/* gallery preview */
+.thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.thumb { aspect-ratio: 4 / 3; border: 2px solid var(--ink); background:
+  linear-gradient(to top right, transparent calc(50% - 1px), var(--line) 50%, transparent calc(50% + 1px)),
+  linear-gradient(to top left, transparent calc(50% - 1px), var(--line) 50%, transparent calc(50% + 1px)),
+  var(--paper);
+  display: flex; align-items: flex-end; }
+.thumb span { background: var(--lime); border-top: 2px solid var(--ink); border-right: 2px solid var(--ink); padding: 2px 14px; font-weight: 700; font-size: .9rem; }
+.thumb:nth-child(2) span { background: var(--coral); }
+.link-row { margin-top: 18px; font-weight: 700; }
+
+footer { margin-top: 32px; background: var(--ink); color: var(--paper); padding: 28px 0; font-size: .9rem; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer a { color: var(--lime); }
+
+@media (max-width: 760px) {
+  .hero { padding: 40px 0; }
+  .hero .wrap { grid-template-columns: 1fr; }
+  .topics li { grid-template-columns: 1fr; gap: 4px; }
+  .thumbs { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">建築学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html" aria-current="page">index</a></li>
+        <li><a href="blog.html">blog</a></li>
+        <li><a href="gallery.html">gallery</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>建物を、<br><span>図面から読む</span>。</h1>
+        <p>建築学を勉強していく記録サイトです。歴史、構造、環境、設計。学んだことをノートのように積み上げて、漫画やイラストにもしていきます。</p>
+        <div class="btns">
+          <a class="btn" href="blog.html">勉強の進捗を見る</a>
+          <a class="btn alt" href="gallery.html">ギャラリーへ</a>
+        </div>
+      </div>
+      <svg class="drawing" viewBox="0 0 360 300" role="img" aria-label="建物の立面図と寸法線のイラスト">
+        <line x1="10" y1="260" x2="350" y2="260" stroke="#2a2118" stroke-width="3"/>
+        <rect x="60" y="120" width="210" height="140" fill="#adff2f" stroke="#2a2118" stroke-width="3"/>
+        <rect x="100" y="64" width="130" height="56" fill="#ff7f50" stroke="#2a2118" stroke-width="3"/>
+        <rect x="52" y="108" width="226" height="12" fill="#2a2118"/>
+        <rect x="92" y="52" width="146" height="12" fill="#2a2118"/>
+        <g fill="#fffdf9" stroke="#2a2118" stroke-width="2">
+          <rect x="118" y="80" width="26" height="26"/><rect x="152" y="80" width="26" height="26"/><rect x="186" y="80" width="26" height="26"/>
+          <rect x="80" y="144" width="30" height="40"/><rect x="124" y="144" width="30" height="40"/><rect x="168" y="144" width="30" height="40"/><rect x="212" y="144" width="30" height="40"/>
+          <rect x="80" y="204" width="30" height="56"/>
+          <rect x="124" y="214" width="118" height="30"/>
+        </g>
+        <g stroke="#2a2118" stroke-width="1.5" fill="none">
+          <line x1="306" y1="52" x2="306" y2="260"/>
+          <line x1="298" y1="52" x2="314" y2="52"/>
+          <line x1="298" y1="260" x2="314" y2="260"/>
+          <line x1="298" y1="120" x2="314" y2="120"/>
+        </g>
+        <g stroke="#2a2118" stroke-width="1" stroke-dasharray="5 4">
+          <line x1="278" y1="52" x2="300" y2="52"/><line x1="278" y1="120" x2="300" y2="120"/>
+        </g>
+        <text x="318" y="92">2F</text>
+        <text x="318" y="194">1F</text>
+        <text x="318" y="256">GL</text>
+        <text x="60" y="284">立面図 S=1:100</text>
+      </svg>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <h2>学んでいること</h2>
+      <p class="lead">建築学は幅が広いので、5つのテーマに分けて少しずつ進めています。</p>
+      <ul class="topics panel">
+        <li><strong>建築史</strong><span>古代の神殿から近代建築まで。様式が生まれた理由を、時代背景と一緒に追います。</span></li>
+        <li><strong>構造</strong><span>力の流れと、柱・梁・壁のはたらき。建物が立っている仕組みを理解する。</span></li>
+        <li><strong>環境・設備</strong><span>光、風、熱、音。快適な空間をつくるための考え方。</span></li>
+        <li><strong>設計・製図</strong><span>平面図、立面図、断面図の読み方と描き方。</span></li>
+        <li><strong>法規</strong><span>建築基準法など、建物を建てるときのルール。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>最近の進捗</h2>
+      <p class="lead">blogの最新3件です。</p>
+      <div class="panel">
+        <ul class="log">
+          <li><time datetime="2026-10-25">2026.10.25</time>断面図の読み方をやり直した。階高と天井高の違いがやっと区別できた。</li>
+          <li><time datetime="2026-10-23">2026.10.23</time>ゴシック建築のフライング・バットレスについてまとめた。外から支える発想がおもしろい。</li>
+          <li><time datetime="2026-10-20">2026.10.20</time>構造力学の入門書を1章読んだ。力のつり合いは図に描くと分かりやすい。</li>
+        </ul>
+        <div class="more"><a href="blog.html">blogをすべて見る</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>ギャラリー</h2>
+      <p class="lead">勉強したことを描いた漫画やイラストを載せていきます。</p>
+      <div class="thumbs">
+        <div class="thumb"><span>漫画</span></div>
+        <div class="thumb"><span>イラスト</span></div>
+        <div class="thumb"><span>スケッチ</span></div>
+      </div>
+      <p class="link-row"><a href="gallery.html">ギャラリーをすべて見る</a></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; 2026 建築学ノート</span>
+    <span><a href="about.html">このサイトについて</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
